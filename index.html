@@ -37,27 +37,36 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#publications">Publications</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
                 </ul>
             </div>
         </nav>
     <!-- Page Content-->
     <div class="container-fluid p-0">
         <!-- About-->
-        <section class="resume-section" id="about">
+        <section class="resume-section" id="about" style="font-size: 20px; line-height: 1.5;">
             <div class="resume-section-content">
                 <h1 class="mb-0">
                     Xiaohan
                     <span class="text-primary">Kuang</span>
                 </h1>
                 <div class="subheading mb-5">
-                    Vanderbilt University - Data Science Institute ·
-                    <a href="mailto:xiaohan.kuang@vanderbilt.edu">xiaohan.kuang@vanderbilt.edu</a>
+                    Vanderbilt University - Data Science Institute
                 </div>
-                <p class="lead mb-5">I am a graduate student at Vanderbilt University's Data Science Institute, specializing in machine learning applications. I am passionate about leveraging AI to solve complex biological problems and drive advancements in the field.</p>
+                <p class="lead mb-3">I am a graduate student at <a href="https://www.vanderbilt.edu/datascience/" target="_blank">Vanderbilt University's
+                     Data Science Institute</a> specializing in machine learning and its applications in computational biology. 
+                     I completed my Bachelor of Science in Computer Science, Mathematics, and Data Science from the
+                     <a href="https://www.wisc.edu/" target="_blank">University of Wisconsin–Madison</a> in 2022. 
+                </p>
+                <h5 class="mt-3">Research Interest</h5>
+                    Integrating advanced data science methodologies and AI-driven models, such as diffusion 
+                    models and equivariant graph neural networks, with biological research and other 
+                    interdisciplinary fields to improve current methods and develop practical applications.</li>
+                <ul class="mb-5 mt-3">
+                    <li><a href="assets/file/xiaohan_kuang_cv.pdf" target="_blank">Download my CV</a></li>
+                    <li>Email: xiaohan (dot) kuang (at) vanderbilt (dot) edu</li>
+                </ul>
                 <div class="social-icons">
                     <a class="social-icon" href="https://www.linkedin.com/in/xiaohan-kuang-39a508216/"><i class="fab fa-linkedin-in"></i></a>
                     <a class="social-icon" href="https://github.com/kuangxh9"><i class="fab fa-github"></i></a>
@@ -65,149 +74,96 @@
             </div>
         </section>
         <hr class="m-0" />
+        
         <!-- Experience-->
         <section class="resume-section" id="experience">
             <div class="resume-section-content">
                 <h2 class="mb-5">Experience</h2>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
-                        <h3 class="mb-0">Research Assistant</h3>
-                        <div class="subheading mb-3">Vanderbilt University Medical Center, Meiler Lab</div>
-                        <p>Predicting Water Molecule Distribution on Protein Surfaces Using Diffusion Models</p>
+                        <h3 class="mb-0">Vanderbilt University Medical Center, Meiler Lab</h3>
+                        <div class="subheading mb-3">Research Assistant</div>
                         <ul>
-                            <li>Designed and implemented a novel approach to predict water molecule distribution on protein surfaces using equivariant 3D neural networks (E3NN) and score-based diffusion models.</li>
-                            <li>Developed annealing Langevin inference techniques to sample original water molecule distributions from random noise.</li>
-                            <li>Enhanced the accuracy of docking predictions and small molecule design by learning hydrogen bond interactions in protein structures.</li>
+                            <li>Developed a novel generative AI framework that integrates score-based diffusion models
+                                 with equivariant graph neural networks to predict water or metal-binding sites in protein 
+                                 structures, outperforming state-of-the-art tools. Two manuscripts have resulted from this 
+                                 project: one accepted at NeurIPS MLSB 2024, and the other currently under review. </li>
+                            <li>Developed a computational approach to detect antigen-binding sites by 
+                                representing antigen surface information as 2D images. Preliminary results 
+                                indicate that convolutional neural networks (CNNs) can predict binding sites 
+                                effectively, achieving an AUC greater than 0.93. Part of this work has been 
+                                published in a peer-reviewed journal. </li>
+                            <li>Developed an active learning framework integrating molecular dynamics simulations and 
+                                machine learning to explore the relationship between peptide sequences and their fibril 
+                                formation propensity. This manuscript is currently under review. </li>
                         </ul>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary">In Progress</span></div>
+                    <div class="flex-shrink-0"><span class="text-primary">Oct. 2023 - Present</span></div>
                 </div>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
-                        <h3 class="mb-0">Researcher</h3>
-                        <div class="subheading mb-3">Vanderbilt University, Data Science Institute</div>
-                        <p>Developing a Web Platform for Converting Academic Papers into Plain Language Summaries</p>
+                        <h3 class="mb-0">Vanderbilt University, Data Science Institute </h3>
+                        <div class="subheading mb-3">Researcher</div>
                         <ul>
-                            <li>Developed a web application that utilizes artificial intelligence to convert academic papers into easily understandable plain language summaries.</li>
-                            <li>Built the platform using Streamlit, GPT API, and Hugging Face, and implemented user registration and login functionality using Python and Deta.</li>
+                            <li>Developed an AI-powered web application to convert complex academic papers into easily 
+                                understandable summaries, bridging the gap between scientific research and the general public. </li>
+                            <li>Implemented the platform using Streamlit, integrating user authentication and content 
+                                customization features with Python and Deta to provide a seamless and engaging user 
+                                experience.</li>
                         </ul>
                     </div>
                     <div class="flex-shrink-0"><span class="text-primary">Fall 2023</span></div>
                 </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Teaching Assistant</h3>
-                        <div class="subheading mb-3">Vanderbilt University</div>
-                        <p>Courses:</p>
-                        <ul>
-                            <li>DS5220 - Principles of Programming and Simulation</li>
-                            <li>Head TA for DS 1100 - Applied Programming and Problem Solving in Python and DS 3262 - Applied Machine Learning</li>
-                        </ul>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">August 2024 - Present</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Course Assistant</h3>
-                        <div class="subheading mb-3">University of Wisconsin – Madison</div>
-                        <p>Course: Math535 - Mathematical Methods in Data Science</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Spring 2022</span></div>
-                </div>
             </div>
         </section>
         <hr class="m-0" />
+
         <!-- Publications-->
          
-        <!-- <section class="resume-section" id="publications">
+        <!-- Publications-->
+        <section class="resume-section" id="publications">
             <div class="resume-section-content">
                 <h2 class="mb-5">Publications</h2>
-                <ul class="list-unstyled">
-                    <li>• Machine-learning-based Structural Analysis of Interactions between Antibodies and Antigens</li>
-                </ul>
-            </div>
-        </section>
-        <hr class="m-0" /> -->
-        <!-- Education-->
-        <section class="resume-section" id="education">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Education</h2>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Vanderbilt University</h3>
-                        <div class="subheading mb-3">Master of Science, Data Science</div>
-                        <p>Expected: May 2025</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">August 2023 - May 2025</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">University of Wisconsin – Madison</h3>
-                        <div class="subheading mb-3">Bachelor of Science</div>
-                        <p>Computer Science, Mathematics, Data Science</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">August 2018 - May 2022</span></div>
-                </div>
+                <ol>
+                    <li>
+                        <strong>Kuang, X.</strong>, Su, Z., Liu, Y. (Lance), Lin, X., Spencer-Smith, J., Derr, T., Wu, Y., & Meiler, J. 
+                        SuperWater: Predicting water molecule positions on protein structures by generative AI. 
+                        Preprint: <a href="https://www.biorxiv.org/content/10.1101/2024.11.18.624208v1" target="_blank">bioRxiv</a> (2024)
+                    </li>
+                    <li>
+                        Lin, X., Su, Z., Liu, Y., Liu, J., <strong>Kuang, X.</strong>, Cummings, P. T., Spencer-Smith, J., & Meiler, J. 
+                        SuperMetal: A generative AI framework for rapid and precise metal ion location prediction in proteins. 
+                        Accepted at <em>NeurIPS MLSB</em> (2024)
+                    </li>
+                    <li>
+                        Su, Z., <strong>Kuang, X.</strong>, Jalali, S., Jahdy, T., Caren, Wong, C., & Dias, C. L. 
+                        Discovering new amyloid-like peptides using all-atom simulations and artificial intelligence. 
+                        Under Review.
+                    </li>
+                    <li>
+                        Zhang, G., <strong>Kuang, X.</strong>, Zhang, Y., Liu, Y., Su, Z., Zhang, T., & Wu, Y. 
+                        Machine-learning-based structural analysis of interactions between antibodies and antigens. 
+                        Published in <em>BioSystem</em> (2024) <a href="https://www.sciencedirect.com/science/article/abs/pii/S0303264724001497" target="_blank">[Paper]</a>
+                    </li>
+                </ol>
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Skills-->
-        <section class="resume-section" id="skills">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Skills</h2>
-                <div class="subheading mb-3">Programming Languages & Tools</div>
-                <ul class="list-inline dev-icons">
-                    <li class="list-inline-item"><i class="fab fa-python"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-git"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-docker"></i></li>
-                    <li class="list-inline-item"><i class="fas fa-database"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-                </ul>
-                <div class="subheading mb-3">Workflow</div>
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Designing and implementing machine learning models
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Developing web applications with AI integration
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Data analysis and visualization
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Utilizing various machine learning frameworks
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Conducting research in computational biology
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <hr class="m-0" />
+
+
         <!-- Interests-->
         <section class="resume-section" id="interests">
             <div class="resume-section-content">
                 <h2 class="mb-5">Interests</h2>
-                <p>I am passionate about integrating data science techniques with biological research to drive groundbreaking advancements in the field. I enjoy leveraging artificial intelligence to enable more precise drug design and molecular docking, and applying machine learning to accelerate the discovery of novel therapeutics for complex diseases.</p>
-        <p>Outside of my research, I have a diverse range of hobbies. I enjoy playing the guitar, practicing Chinese calligraphy, playing Go, and engaging in competitive matches of Dota.</p>
+                <p>When I’m not immersed in research or coding, I enjoy exploring hobbies that keep me balanced and inspired. Practicing Chinese calligraphy for over 14
+                     years has been a journey of creativity and mindfulness, offering a connection to tradition through brushstroke. Music is another passion - I often pick
+                      up my guitar to teach myself new songs, discovering melodies one chord at a time. My interests constantly evolve, and I’m always curious to try
+                       something new that sparks joy and creativity.</p>
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Awards-->
-        <section class="resume-section" id="awards">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Awards</h2>
-                <ul class="list-unstyled">
-                    <li>• 1<sup>st</sup> Place - Vanderbilt University Summer AI Showcase 2024</li>
-                    <li>• Data Science For Social Good Research Scholarship - Vanderbilt University, 2024</li>
-                </ul>
-            </div>
-        </section>
+
+
     </div>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
