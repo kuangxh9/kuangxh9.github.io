@@ -2,3 +2,8 @@
 .DS_Store
 Thumbs.db
 __pycache__/
+
+# analytics: local Cloudflare config and state
+analytics/wrangler.toml
+analytics/.wrangler/
+node_modules/

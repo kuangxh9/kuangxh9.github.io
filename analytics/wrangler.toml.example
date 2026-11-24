@@ -1,0 +1,13 @@
+# Copy to analytics/wrangler.toml (ignored by git) and fill in database_id.
+name = "kuangxh9-stats"
+main = "worker.js"
+compatibility_date = "2025-06-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kuangxh9-stats"
+database_id = "PASTE-THE-ID-FROM-wrangler-d1-create"
+
+# forget visitor hashes daily
+[triggers]
+crons = ["17 3 * * *"]

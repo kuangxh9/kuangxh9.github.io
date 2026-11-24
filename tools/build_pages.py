@@ -14,6 +14,7 @@ def head(title, desc, path, depth, extra=''):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<meta name="xk-stats" content="{STATS}">
 <link rel="canonical" href="https://kuangxh9.github.io/{path}">
 <meta name="theme-color" content="#f4f4f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101113" media="(prefers-color-scheme: dark)">
@@ -43,6 +44,8 @@ def head(title, desc, path, depth, extra=''):
 '''
 
 NAV = [('research/', 'Research'), ('cv/', 'CV'), ('about/', 'About')]
+# the visitor counter (analytics/worker.js) once it is deployed, e.g. 'https://kuangxh9-stats.NAME.workers.dev'; empty = off
+STATS = ''
 MARK = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mark-inline.txt'), encoding='utf-8').read()
 
 def header(current, depth, absolute=False):
@@ -85,12 +88,14 @@ def footer(depth, extra_scripts=''):
     <summary>Colophon</summary>
     <div class="colophon-body">
       <p>Set in Archivo, a grotesque with a variable width axis, on a twelve-column grid, with Noto Serif TC for Chinese. One accent, the blue of an electron-density map. The mark is an X beside a K drawn as a stereocentre: its stem is two bonds in the plane of the page, its arms a solid wedge and a hashed wedge; it is set out by <code>tools/monogram.py</code>. The landscape on the home page is invented; the sampler is ordinary annealed Langevin dynamics. Molecules are drawn from RDKit coordinates. Every animation shares one curve, a quick start and a long release. Press G to see the grid.</p>
+      <p>Visits are counted by a small counter of my own, by day, page and country only: no cookies, no stored IP addresses, and nothing at all from browsers that send Do Not Track or Global Privacy Control.</p>
       <p>Updated November 2026.</p>
     </div>
   </details>
 </footer>
 
-<script src="{up}assets/js/site.js" defer></script>{extra_scripts}
+<script src="{up}assets/js/site.js" defer></script>
+<script src="{up}assets/js/footprint.js" defer></script>{extra_scripts}
 </body>
 </html>
 '''
