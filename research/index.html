@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research · Xiaohan Kuang</title>
+<meta name="description" content="Research by Xiaohan Kuang in computational chemistry and machine learning: binding affinity and activity prediction, generative design, binding sites, molecular co-folding and agentic workflows, and earlier work on water and metal sites.">
+<link rel="canonical" href="https://kuangxh9.github.io/research/">
+<meta name="theme-color" content="#f4f4f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101113" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Research · Xiaohan Kuang">
+<meta property="og:description" content="Research by Xiaohan Kuang in computational chemistry and machine learning: binding affinity and activity prediction, generative design, binding sites, molecular co-folding and agentic workflows, and earlier work on water and metal sites.">
+<meta property="og:url" content="https://kuangxh9.github.io/research/">
+<meta property="og:image" content="https://kuangxh9.github.io/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<script>
+  (function () {
+    var q = /[?&]theme=(light|dark)/.exec(location.search), t = q && q[1];
+    try { t = t || localStorage.getItem('theme'); } catch (e) {}
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
+    setTimeout(function () { document.documentElement.classList.add('is-ready'); }, 1200);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body class="page-research">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header grid">
+  <p class="site-name"><a class="brand" href="../"><svg class="mark" viewBox="0 0 32 24" aria-hidden="true" focusable="false"><clipPath id="xk-cut"><rect x="0" y="4.0" width="40" height="16.0"/></clipPath><g clip-path="url(#xk-cut)"><line class="mark-stroke" pathLength="1" style="--o:0" x1="1.87" y1="2.35" x2="15.13" y2="21.65" stroke-width="2.5"/><line class="mark-stroke" pathLength="1" style="--o:1" x1="15.13" y1="2.35" x2="1.87" y2="21.65" stroke-width="2.5"/><line class="mark-stroke" pathLength="1" style="--o:2" x1="18.90" y1="2.00" x2="18.90" y2="22.00" stroke-width="2.5"/><path class="mark-wedge" style="--o:3;transform-origin:20.15px 12.00px" d="M20.15 12.00 L30.28 4.08 L26.32 0.72Z"/><line class="mark-rung" style="--r:0" x1="22.00" y1="15.38" x2="23.19" y2="14.38" stroke-width="1.45"/><line class="mark-rung" style="--r:1" x1="23.23" y1="17.64" x2="25.22" y2="15.96" stroke-width="1.45"/><line class="mark-rung" style="--r:2" x1="24.47" y1="19.90" x2="27.24" y2="17.54" stroke-width="1.45"/><line class="mark-rung" style="--r:3" x1="25.70" y1="22.15" x2="29.27" y2="19.13" stroke-width="1.45"/></g></svg><span>Xiaohan Kuang</span></a></p>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="../research/" aria-current="page">Research<span class="nav-mark" aria-hidden="true"></span></a>
+    <a href="../cv/">CV</a>
+    <a href="../about/">About</a>
+  </nav>
+  <div class="site-tools">
+    <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1a7 7 0 0 1 0 14z" fill="currentColor"/></svg>
+      <span data-theme-label>Dark</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head grid">
+    <h1 class="page-title">Research</h1>
+    <p class="page-intro">My field is computational chemistry and my method is machine learning. I build models that predict how molecules bind and how active they will be, generative models that design ligands, peptides and proteins, and agentic systems that put these models to work.</p>
+    <nav class="page-index" aria-label="On this page"><ol><li><a href="#now">Directions</a><span class="tnum">5</span></li><li><a href="#earlier">Earlier work</a><span class="tnum">4</span></li><li><a href="#publications">Publications</a><span class="tnum">5</span></li><li><a href="#talks">Talks and posters</a><span class="tnum">2</span></li><li><a href="#software">Software</a><span class="tnum">3</span></li></ol></nav>
+    <p class="intro-sub">At Takeda I build and benchmark these models, the GPU pipelines that run them and the harnesses through which AI agents use them, with computational chemists, structural biologists and data scientists. The work is confidential, so this page describes directions rather than results. Beneath it is a wider interest in AI for science: learned models, physical simulation and AI agents working together.</p>
+  </section>
+
+  <section class="section grid" id="now" data-reveal aria-labelledby="h-now">
+    <h2 class="section-label" id="h-now">Directions<small>Takeda, since June 2025</small></h2>
+    <div class="section-body">
+
+      <article class="row thread rv" data-schem-host>
+        <div class="schem-wrap"><svg class="schem" data-amp="30" viewBox="-14.9 -1.5 212.4 128.5" style="width:289px;aspect-ratio:212.4/128.5" role="img" aria-label="A parity plot: predicted against measured affinity, close to the diagonal."><path class="k" d="M0 0 V112 H196"/><line class="f" x1="4.00" y1="108.00" x2="192.00" y2="6.00"/><circle class="kf s" cx="13.88" cy="105.58" r="2.3"/><circle class="kf s" cx="21.15" cy="95.97" r="2.3"/><circle class="kf s" cx="24.74" cy="92.85" r="2.3"/><circle class="kf s" cx="42.07" cy="93.49" r="2.3"/><circle class="kf s" cx="48.81" cy="88.44" r="2.3"/><circle class="kf s" cx="52.72" cy="84.17" r="2.3"/><circle class="kf s" cx="49.53" cy="85.03" r="2.3"/><circle class="kf s" cx="67.51" cy="78.71" r="2.3"/><circle class="kf s" cx="63.64" cy="59.18" r="2.3"/><circle class="kf s" cx="74.76" cy="64.29" r="2.3"/><circle class="kf s" cx="87.85" cy="63.42" r="2.3"/><circle class="kf s" cx="96.05" cy="55.42" r="2.3"/><circle class="kf s" cx="102.10" cy="58.85" r="2.3"/><circle class="kf s" cx="104.37" cy="64.28" r="2.3"/><circle class="kf s" cx="117.57" cy="56.81" r="2.3"/><circle class="kf s" cx="118.81" cy="39.43" r="2.3"/><circle class="kf s" cx="127.30" cy="40.04" r="2.3"/><circle class="a s" cx="139.30" cy="38.70" r="3.1"/><circle class="kf s" cx="141.02" cy="26.43" r="2.3"/><circle class="kf s" cx="147.77" cy="37.85" r="2.3"/><circle class="kf s" cx="153.45" cy="27.19" r="2.3"/><circle class="a s" cx="166.74" cy="11.22" r="3.1"/><circle class="kf s" cx="171.97" cy="26.97" r="2.3"/><circle class="kf s" cx="168.77" cy="11.75" r="2.3"/><text class="lab" x="196.00" y="125.00" text-anchor="end">measured</text><text class="lab" x="-6.00" y="0.00" text-anchor="end" transform="rotate(-90 -6.00 0.00)">predicted</text></svg></div>
+        <div class="row-main">
+          <h3>Binding and activity</h3>
+          <p>Predicting how tightly a ligand binds its target, the pose it binds in, and how far to trust that pose, so candidates can be ranked for hit triage and lead optimization before anything is synthesized.</p>
+          <p class="row-meta">Affinity and pose prediction, pose-quality assessment, ensemble consensus</p>
+        </div>
+      </article>
+
+      <article class="row thread rv" data-schem-host>
+        <div class="schem-wrap"><svg class="schem" data-amp="34" viewBox="-90.4 -40.0 174.8 86.1" style="width:238px;aspect-ratio:174.8/86.1" role="img" aria-label="Paracetamol (acetaminophen) as a skeletal formula, assembling bond by bond."><line class="k s" x1="82.88" y1="28.48" x2="56.09" y2="12.88"/><line class="k s" x1="58.72" y1="12.89" x2="58.80" y2="-8.81"/><line class="k s" x1="53.45" y1="12.88" x2="53.53" y2="-8.82"/><line class="k s" x1="56.09" y1="12.88" x2="37.26" y2="23.67"/><line class="k s" x1="21.15" y1="23.61" x2="2.39" y2="12.69"/><line class="k s" x1="2.39" y1="12.69" x2="-24.51" y2="28.09"/><line class="k s" x1="-24.51" y1="28.09" x2="-51.30" y2="12.49"/><line class="k s" x1="-26.25" y1="20.62" x2="-43.94" y2="10.32"/><line class="k s" x1="-51.30" y1="12.49" x2="-51.19" y2="-18.50"/><line class="k s" x1="-51.19" y1="-18.50" x2="-69.94" y2="-29.42"/><line class="k s" x1="-51.19" y1="-18.50" x2="-24.28" y2="-33.91"/><line class="k s" x1="-43.84" y1="-16.28" x2="-26.08" y2="-26.45"/><line class="k s" x1="-24.28" y1="-33.91" x2="2.51" y2="-18.31"/><line class="k s" x1="2.51" y1="-18.31" x2="2.39" y2="12.69"/><line class="k s" x1="-3.09" y1="-13.06" x2="-3.17" y2="7.40"/><text class="atom s" x="56.20" y="-13.98" text-anchor="middle">O</text><text class="atom s" x="29.19" y="32.43" text-anchor="middle">N</text><text class="atom s" x="29.19" y="44.16" text-anchor="middle">H</text><text class="atom s" x="-74.18" y="-29.96" text-anchor="end">HO</text></svg></div>
+        <div class="row-main">
+          <h3>Generative design</h3>
+          <p>Generative models that propose ligands for a given pocket, and peptides and proteins with designed sequences, including noncanonical amino acids, checked against physics-based simulation.</p>
+          <p class="row-meta">Diffusion, transformer and other 3D generative models; pocket-conditioned generation</p>
+        </div>
+      </article>
+
+      <article class="row thread rv" data-schem-host>
+        <div class="schem-wrap"><svg class="schem" data-amp="38" viewBox="9.3 8.5 201.4 105.0" style="width:274px;aspect-ratio:201.4/105.0" role="img" aria-label="A ligand in a protein pocket, held by two hydrogen bonds and a stacked phenylalanine ring."><path class="k" d="M14 10 C 34 10, 44 22, 50 42 S 70 96, 110 96 S 162 84, 168 48 S 186 10, 206 10"/><path class="k depth" d="M14 24 C 28 24, 36 36, 40 56 S 62 112, 110 112 S 176 100, 182 62 S 194 24, 206 24"/><line class="as s" x1="91.38" y1="68.42" x2="99.07" y2="63.99"/><line class="as s" x1="99.07" y1="63.99" x2="112.92" y2="72.01"/><line class="as s" x1="102.86" y1="62.86" x2="112.00" y2="68.15"/><line class="as s" x1="112.92" y1="72.01" x2="126.78" y2="64.02"/><line class="as s" x1="126.78" y1="64.02" x2="126.79" y2="48.02"/><line class="as s" x1="123.90" y1="61.29" x2="123.91" y2="50.73"/><line class="as s" x1="126.79" y1="48.02" x2="112.94" y2="40.01"/><line class="as s" x1="112.94" y1="40.01" x2="99.08" y2="47.99"/><line class="as s" x1="112.02" y1="43.86" x2="102.87" y2="49.13"/><line class="as s" x1="99.08" y1="47.99" x2="91.40" y2="43.55"/><line class="as s" x1="99.08" y1="47.99" x2="99.07" y2="63.99"/><text class="atom-a s" x="89.00" y="76.12" text-anchor="end">H₂N</text><text class="atom-a s" x="89.02" y="44.12" text-anchor="end">HO</text><line class="f late" x1="69.23" y1="38.98" x2="36.00" y2="34.00"/><text class="lab late" x="30.00" y="36.00" text-anchor="end">Ser</text><line class="f late" x1="69.20" y1="72.98" x2="48.00" y2="76.00"/><text class="lab late" x="42.00" y="80.00" text-anchor="end">Asp</text><line class="k late" x1="157.79" y1="56.50" x2="150.00" y2="61.00"/><line class="k late" x1="150.00" y1="61.00" x2="142.21" y2="56.50"/><line class="k late" x1="142.21" y1="56.50" x2="142.21" y2="47.50"/><line class="k late" x1="142.21" y1="47.50" x2="150.00" y2="43.00"/><line class="k late" x1="150.00" y1="43.00" x2="157.79" y2="47.50"/><line class="k late" x1="157.79" y1="47.50" x2="157.79" y2="56.50"/><line class="f late" x1="127.93" y1="56.01" x2="139.00" y2="52.00"/><text class="lab late" x="190.00" y="56.00" text-anchor="start">Phe</text><line class="f late" x1="160.00" y1="53.00" x2="187.00" y2="53.00"/></svg></div>
+        <div class="row-main">
+          <h3>Binding sites</h3>
+          <p>Where binding happens: pockets, including cryptic ones that open only in some conformations; ternary complexes for targeted protein degradation; and the contacts, waters and metal ions that hold a complex together.</p>
+          <p class="row-meta">Pocket and cryptic pocket detection, ternary complex modeling</p>
+        </div>
+      </article>
+
+      <article class="row thread rv" data-schem-host>
+        <div class="schem-wrap"><svg class="schem" data-amp="0" viewBox="2.0 14.0 206.0 104.0" style="width:280px;aspect-ratio:206.0/104.0" data-cofold role="img" aria-label="A protein and a ligand predicted together: the chain folds into strands and a helix around the ligand as it binds."><g class="cf-chain"></g><g class="cf-lig"><line class="as s" x1="91.23" y1="56.90" x2="97.17" y2="53.46"/><line class="as s" x1="98.36" y1="53.45" x2="98.36" y2="46.58"/><line class="as s" x1="95.98" y1="53.46" x2="95.98" y2="46.59"/><line class="as s" x1="97.17" y1="53.46" x2="109.30" y2="60.45"/><line class="as s" x1="109.30" y1="60.45" x2="109.32" y2="74.45"/><line class="as s" x1="111.83" y1="62.82" x2="111.83" y2="72.06"/><line class="as s" x1="109.32" y1="74.45" x2="121.45" y2="81.44"/><line class="as s" x1="121.45" y1="81.44" x2="133.56" y2="74.43"/><line class="as s" x1="122.24" y1="78.06" x2="130.24" y2="73.44"/><line class="as s" x1="133.56" y1="74.43" x2="133.55" y2="60.43"/><line class="as s" x1="133.55" y1="60.43" x2="121.42" y2="53.44"/><line class="as s" x1="130.23" y1="61.42" x2="122.23" y2="56.81"/><line class="as s" x1="121.42" y1="53.44" x2="109.30" y2="60.45"/><text class="atom-a s" x="88.85" y="64.61" text-anchor="end">H₂N</text><text class="atom-a s" x="97.16" y="43.60" text-anchor="middle">O</text></g><g class="cf-contacts"></g></svg></div>
+        <div class="row-main">
+          <h3>Molecular co-folding</h3>
+          <p>Predicting a protein and its ligand together, as one complex, instead of docking a molecule into a fixed structure. I build pipelines around co-folding models, from sequence alignments to the complexes they produce, assess the poses, and adapt the models to drug-discovery targets.</p>
+          <p class="row-meta">Co-folding and MSA-based structure prediction, fine-tuning, GPU pipelines</p>
+        </div>
+      </article>
+
+      <article class="row thread rv" data-schem-host>
+        <div class="schem-wrap"><svg class="schem" data-amp="0" viewBox="-1.5 4.8 215.0 102.5" style="width:292px;aspect-ratio:215.0/102.5" data-trace role="img" aria-label="An agentic workflow as an execution trace: a plan forks into three agents calling structure, affinity and simulation tools in parallel; one branch fails, two return to review, and the chosen line runs on."><clipPath id="trace-clip"><rect class="trace-clip" x="-10" y="-10" width="0" height="140"/></clipPath><text class="lab" x="0.00" y="13.30" text-anchor="start">plan</text><line class="f lane" x1="46.00" y1="10.00" x2="212.00" y2="10.00"/><text class="lab" x="0.00" y="36.30" text-anchor="start">structure</text><line class="f lane" x1="46.00" y1="33.00" x2="212.00" y2="33.00"/><text class="lab" x="0.00" y="59.30" text-anchor="start">affinity</text><line class="f lane" x1="46.00" y1="56.00" x2="212.00" y2="56.00"/><text class="lab" x="0.00" y="82.30" text-anchor="start">simulate</text><line class="f lane" x1="46.00" y1="79.00" x2="212.00" y2="79.00"/><text class="lab" x="0.00" y="105.30" text-anchor="start">review</text><line class="f lane" x1="46.00" y1="102.00" x2="212.00" y2="102.00"/><g class="trace-run" clip-path="url(#trace-clip)"><line class="bar" x1="50.00" y1="10.00" x2="64.00" y2="10.00"/><path class="k step" d="M64.0 10.0 H67 V82.0"/><line class="k step" x1="67.00" y1="30.00" x2="70.00" y2="30.00"/><line class="k step" x1="67.00" y1="59.00" x2="70.00" y2="59.00"/><line class="k step" x1="67.00" y1="82.00" x2="70.00" y2="82.00"/><line class="bar" x1="70.00" y1="30.00" x2="94.00" y2="30.00"/><line class="bar" x1="98.00" y1="53.00" x2="116.00" y2="53.00"/><path class="k step" d="M94.0 30.0 H98.0 V53.0"/><line class="bar" x1="70.00" y1="59.00" x2="88.00" y2="59.00"/><line class="bar" x1="92.00" y1="76.00" x2="106.00" y2="76.00"/><path class="k step" d="M88.0 59.0 H92.0 V76.0"/><line class="k fail" x1="109.00" y1="73.00" x2="115.00" y2="79.00"/><line class="k fail" x1="115.00" y1="73.00" x2="109.00" y2="79.00"/><line class="bar" x1="70.00" y1="82.00" x2="110.00" y2="82.00"/><line class="bar" x1="124.00" y1="102.00" x2="136.00" y2="102.00"/><path class="k step" d="M116.0 53.0 H124.0 V102.0"/><path class="k step" d="M110.0 82.0 H124.0 V102.0"/><line class="bar a" x1="142.00" y1="33.00" x2="158.00" y2="33.00"/><path class="as step" d="M136.0 102.0 H142.0 V33.0"/><line class="bar a" x1="162.00" y1="79.00" x2="192.00" y2="79.00"/><path class="as step" d="M158.0 33.0 H162.0 V79.0"/><line class="bar a" x1="198.00" y1="102.00" x2="208.00" y2="102.00"/><path class="as step" d="M192.0 79.0 H198.0 V102.0"/></g><line class="trace-head" x1="50" y1="2" x2="50" y2="110"/></svg></div>
+        <div class="row-main">
+          <h3>Agentic workflows</h3>
+          <p>AI agents that carry out computational work: planning a study, calling structure-prediction, affinity and simulation tools, checking what comes back, and passing results on. I build the execution harnesses and orchestration that let several agents work in parallel on scientific software, and keep their runs reliable and reproducible.</p>
+          <p class="row-meta">Agent harnesses, multi-agent orchestration, tool integration, workflow automation</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section grid" id="earlier" data-reveal aria-labelledby="h-earlier">
+    <h2 class="section-label" id="h-earlier">Earlier work<small>Meiler Lab, Vanderbilt, 2023–2025</small></h2>
+    <div class="section-body">
+      <article class="row compact rv" id="superwater">
+        <div class="row-date">2024–2025</div>
+        <div class="row-main">
+          <h3>SuperWater: where water sits</h3>
+          <p>A score-based diffusion model on E(3)-equivariant networks that places water molecules on protein structures, with a confidence model that filters and clusters them. It began as DiffWater, which took first place at Vanderbilt’s Spring 2024 AI Showcase.</p>
+          <p class="links-inline"><a class="ln" href="https://doi.org/10.1038/s42004-025-01789-4">Communications Chemistry</a><a class="ln" href="https://github.com/kuangxh9/SuperWater">Code</a><a class="ln" href="https://doi.org/10.5281/zenodo.17465949">Zenodo</a><a class="ln" href="https://www.vanderbilt.edu/valiant/2026/01/28/superwater-as-a-generative-ai-framework-to-predict-water-molecule-positions-on-protein-structures">Vanderbilt VALIANT</a></p>
+        </div>
+        <p class="row-side">First author</p>
+      </article>
+      <article class="row compact rv" id="supermetal">
+        <div class="row-date">2024–2025</div>
+        <div class="row-main">
+          <h3>SuperMetal: where metal ions bind</h3>
+          <p>A generative framework for locating metal ions in proteins; in the paper’s benchmarks it placed them more accurately than AlphaFold 3.</p>
+          <p class="links-inline"><a class="ln" href="https://doi.org/10.1186/s13321-025-01038-9">Journal of Cheminformatics</a><a class="ln" href="https://neurips.cc/virtual/2024/102527">NeurIPS 2024 MLSB</a></p>
+        </div>
+        <p class="row-side">Co-author</p>
+      </article>
+      <article class="row compact rv" id="amyloid">
+        <div class="row-date">2024–2025</div>
+        <div class="row-main">
+          <h3>Amyloid-like peptides</h3>
+          <p>An active learning loop that couples all-atom molecular dynamics with machine learning to search sequence space for new amyloid-forming peptides.</p>
+          <p class="links-inline"><a class="ln" href="https://doi.org/10.1101/2025.02.12.637911">bioRxiv</a></p>
+        </div>
+        <p class="row-side">First author</p>
+      </article>
+      <article class="row compact rv" id="antibody">
+        <div class="row-date">2023–2025</div>
+        <div class="row-main">
+          <h3>Antibody binding sites and epitopes</h3>
+          <p>Antigen surfaces flattened into images so that CNNs can predict antibody binding sites (AUC above 0.93), and a follow-up that predicts conformational B-cell epitopes with a protein language model.</p>
+          <p class="links-inline"><a class="ln" href="https://doi.org/10.1016/j.biosystems.2024.105264">BioSystems</a><a class="ln" href="https://doi.org/10.1101/2025.10.29.685313">bioRxiv</a></p>
+        </div>
+        <p class="row-side">Co-author</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section grid" id="publications" data-reveal aria-labelledby="h-pubs">
+    <h2 class="section-label" id="h-pubs">Publications</h2>
+    <ol class="section-body pubs">
+      <li class="row pub rv">
+        <div class="row-date">2025</div>
+        <div class="row-main--wide">
+          <h3><a class="ln ln--quiet" href="https://doi.org/10.1038/s42004-025-01789-4">SuperWater as a generative AI framework to predict water molecule positions on protein structures</a></h3>
+          <p class="au"><strong>Kuang, X.</strong>, Liu, Y. L., Lin, X., Spencer-Smith, J., Derr, T., Wu, Y., Bitter, H., Hu, Y., Meiler, J., Su, Z. <span class="ve"><i>Communications Chemistry</i> 8, 397</span></p>
+        </div>
+      </li>
+      <li class="row pub rv">
+        <div class="row-date">2025</div>
+        <div class="row-main--wide">
+          <h3><a class="ln ln--quiet" href="https://doi.org/10.1101/2025.10.29.685313">Structure-based predictions of conformational B cell epitopes by protein language model and deep learning</a></h3>
+          <p class="au">Zhang, Y., Su, Z., Vilicich, F., <strong>Kuang, X.</strong>, Liu, Y., Zhang, G., Wu, Y. <span class="ve"><i>bioRxiv</i> preprint</span></p>
+        </div>
+      </li>
+      <li class="row pub rv">
+        <div class="row-date">2025</div>
+        <div class="row-main--wide">
+          <h3><a class="ln ln--quiet" href="https://doi.org/10.1186/s13321-025-01038-9">SuperMetal: a generative AI framework for rapid and precise metal ion location prediction in proteins</a></h3>
+          <p class="au">Lin, X., Su, Z., Liu, Y. L., Liu, J., <strong>Kuang, X.</strong>, Cummings, P. T., Spencer-Smith, J., Meiler, J. <span class="ve"><i>Journal of Cheminformatics</i> 17, 107; earlier at the <a class="ln" href="https://neurips.cc/virtual/2024/102527">NeurIPS 2024 MLSB workshop</a></span></p>
+        </div>
+      </li>
+      <li class="row pub rv">
+        <div class="row-date">2025</div>
+        <div class="row-main--wide">
+          <h3><a class="ln ln--quiet" href="https://doi.org/10.1101/2025.02.12.637911">Discovering new amyloid-like peptides using all-atom simulations and artificial intelligence</a></h3>
+          <p class="au"><strong>Kuang, X.</strong>, Jalali, S., Rahman, T., Michalowski, J., Sheng-Wong, C., Wong-Ekkabut, J., Su, Z., Dias, C. L. <span class="ve"><i>bioRxiv</i> preprint</span></p>
+        </div>
+      </li>
+      <li class="row pub rv">
+        <div class="row-date">2024</div>
+        <div class="row-main--wide">
+          <h3><a class="ln ln--quiet" href="https://doi.org/10.1016/j.biosystems.2024.105264">Machine-learning-based structural analysis of interactions between antibodies and antigens</a></h3>
+          <p class="au">Zhang, G., <strong>Kuang, X.</strong>, Zhang, Y., Liu, Y., Su, Z., Zhang, T., Wu, Y. <span class="ve"><i>BioSystems</i> 243, 105264</span></p>
+        </div>
+      </li>
+      <li class="row pub-note rv">
+        <div class="row-main--wide"><a class="ln" href="https://orcid.org/0009-0001-9781-1509">ORCID 0009-0001-9781-1509</a><a class="ln" href="https://www.semanticscholar.org/author/2309579441">Semantic Scholar</a></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section grid" id="talks" data-reveal aria-labelledby="h-talks">
+    <h2 class="section-label" id="h-talks">Talks and posters</h2>
+    <div class="section-body">
+      <div class="row compact rv"><div class="row-date">Mar 2025</div><div class="row-main--wide"><h3>SuperWater: predicting water molecule positions on protein structures by generative AI</h3><p class="org">Poster P73524, NVIDIA GTC, San Jose, California</p></div></div>
+      <div class="row compact rv"><div class="row-date">Mar 2024</div><div class="row-main--wide"><h3>Introduction to generative AI models: diffusion models and their application in protein structure prediction</h3><p class="org">Guest lecture, Vanderbilt University</p></div></div>
+    </div>
+  </section>
+
+  <section class="section grid" id="software" data-reveal aria-labelledby="h-soft">
+    <h2 class="section-label" id="h-soft">Software</h2>
+    <div class="section-body">
+      <div class="row compact rv"><div class="row-date">2025</div><div class="row-main--wide"><h3><a class="ln ln--quiet" href="https://github.com/kuangxh9/boltz_module">boltz_module</a></h3><p>A modular extension of Boltz-2 that runs confidence and affinity prediction on CIF inputs separately, without diffusion sampling.</p></div></div>
+      <div class="row compact rv"><div class="row-date">2024</div><div class="row-main--wide"><h3><a class="ln ln--quiet" href="https://github.com/kuangxh9/SuperWater">SuperWater</a></h3><p>Reference implementation: diffusion with e3nn equivariant networks, ESM-2 embeddings, a confidence model and clustering. MIT licensed, archived on Zenodo.</p></div></div>
+      <div class="row compact rv"><div class="row-date">2024</div><div class="row-main--wide"><h3><a class="ln ln--quiet" href="https://github.com/kuangxh9/Fibril_Prediction">Fibril_Prediction</a></h3><p>Notebooks that predict fibril-forming probability for peptide sequences with a small network on ESM-2 embeddings.</p></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot grid">
+  <p class="c1">Xiaohan Kuang</p>
+  <p class="c2">
+    <a class="ln" href="mailto:xiaohan.kuang@outlook.com">xiaohan.kuang@outlook.com</a>
+    <a class="ln" href="https://github.com/kuangxh9">GitHub</a>
+    <a class="ln" href="https://www.linkedin.com/in/xiaohan-kuang-39a508216/">LinkedIn</a>
+    <a class="ln" href="https://orcid.org/0009-0001-9781-1509">ORCID</a>
+    <a class="ln" href="../assets/file/xiaohan_kuang_cv.pdf">CV (PDF)</a>
+  </p>
+  <details class="c3 colophon">
+    <summary>Colophon</summary>
+    <div class="colophon-body">
+      <p>Set in Archivo, a grotesque with a variable width axis, on a twelve-column grid, with Noto Serif TC for Chinese. One accent, the blue of an electron-density map. The mark is an X beside a K drawn as a stereocentre: its stem is two bonds in the plane of the page, its arms a solid wedge and a hashed wedge; it is set out by <code>tools/monogram.py</code>. The landscape on the home page is invented; the sampler is ordinary annealed Langevin dynamics. Molecules are drawn from RDKit coordinates. Every animation shares one curve, a quick start and a long release. Press G to see the grid.</p>
+      <p>Updated November 2026.</p>
+    </div>
+  </details>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
