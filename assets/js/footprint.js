@@ -82,9 +82,9 @@
   function draw(now) {
     if (!W) return;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0); ctx.clearRect(0, 0, W, H);
-    var dr = Math.max(0.6, W / 360 * 0.72);
+    var dr = Math.max(0.9, W / 360 * 2 * 0.6);           // each dot about 60% of the 2° grid spacing
     var darkTheme = parseInt((cols.paper || '#ffffff').replace('#', '').slice(0, 2), 16) < 90;
-    ctx.fillStyle = cols['ink-3']; ctx.globalAlpha = darkTheme ? 0.58 : 0.64;
+    ctx.fillStyle = cols['ink-3']; ctx.globalAlpha = darkTheme ? 0.7 : 0.6;
     world.dots.forEach(function (row) { if (row[0] > LAT0 || row[0] < LAT1) return; row[1].forEach(function (lon) { var q = P(lon, row[0]); ctx.beginPath(); ctx.arc(q[0], q[1], dr / 2, 0, 6.283); ctx.fill(); }); });
     var busy = false;
     marks.forEach(function (m) {
