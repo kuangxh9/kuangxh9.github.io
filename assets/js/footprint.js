@@ -18,6 +18,7 @@
   var live = location.hostname === 'kuangxh9.github.io';
   var local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 
+  var sent = Promise.resolve();                       // the page's own view, once it has been delivered
   (function count() {
     if (!base || !live) return;
     try {
@@ -27,7 +28,9 @@
     } catch (e) {}
     if (navigator.doNotTrack === '1' || window.doNotTrack === '1' || navigator.globalPrivacyControl || navigator.webdriver) return;
     var path = location.pathname.replace(/index\.html$/, '');
-    try { navigator.sendBeacon(base + '/hit', new Blob([JSON.stringify({ p: path })], { type: 'text/plain' })); } catch (e) {}
+    // keepalive fetch: delivered even if the visitor leaves at once, and we know when it has landed
+    try { sent = fetch(base + '/hit', { method: 'POST', body: JSON.stringify({ p: path }), headers: { 'Content-Type': 'text/plain' }, keepalive: true, credentials: 'omit', mode: 'cors' }).catch(function () {}); }
+    catch (e) { try { navigator.sendBeacon(base + '/hit', new Blob([JSON.stringify({ p: path })], { type: 'text/plain' })); } catch (x) {} }
   })();
 
   var el = document.querySelector('[data-footprint]');
@@ -110,7 +113,8 @@
   if ('ResizeObserver' in window) new ResizeObserver(layout).observe(canvas);
 
   fetch(el.dataset.world).then(function (r) { return r.json(); }).then(function (w) { world = w; layout(); }).catch(function () {});
-  var source = mock ? Promise.resolve(mock) : fetch(base + '/stats', { credentials: 'omit' }).then(function (r) { return r.ok ? r.json() : null; });
+  // ask for the totals after this visit has been counted, so it is included in them
+  var source = mock ? Promise.resolve(mock) : sent.then(function () { return fetch(base + '/stats', { credentials: 'omit', cache: 'no-store' }); }).then(function (r) { return r.ok ? r.json() : null; });
   source.then(function (data) {
     if (!data) return;                                 // the counter could not be reached: the map stays, no numbers are invented
     st = data;

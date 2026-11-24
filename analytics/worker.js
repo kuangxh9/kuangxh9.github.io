@@ -1,7 +1,7 @@
 /* Visitor counter for kuangxh9.github.io: a Cloudflare Worker with a D1 database.
 
    POST /hit    {"p": "/about/"}   one page view, sent by navigator.sendBeacon
-   GET  /stats                     aggregates only, cached for ten minutes
+   GET  /stats                     aggregates only, cached 30 s at the edge, never in browsers
 
    What is kept: per day, per page and per country, a count of views; per day and
    per country, a count of distinct visitors. The country is Cloudflare's own
@@ -57,10 +57,13 @@ async function hit(req, env) {
   return ok;
 }
 
+// the edge keeps the answer for 30 s (a burst of visitors costs one set of queries);
+// browsers are told not to keep it at all, so a new view shows up at once
+const CLIENT = { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': ORIGIN };
 async function stats(req, env, ctx) {
   const cache = caches.default, key = new Request(new URL('/stats', req.url).toString());
   const hitc = await cache.match(key);
-  if (hitc) return hitc;
+  if (hitc) return new Response(await hitc.text(), { headers: CLIENT });
   const [tot, vis, countries, days, pages] = await env.DB.batch([
     env.DB.prepare('SELECT COALESCE(SUM(n), 0) AS views, MIN(day) AS since FROM views'),
     env.DB.prepare('SELECT COALESCE(SUM(n), 0) AS visitors FROM visitors'),
@@ -73,9 +76,8 @@ async function stats(req, env, ctx) {
     views: t.views || 0, visitors: (vis.results[0] || {}).visitors || 0, since: t.since || null,
     countries: countries.results, days: days.results, pages: pages.results, updated: new Date().toISOString()
   });
-  const res = new Response(body, { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': ORIGIN } });
-  ctx.waitUntil(cache.put(key, res.clone()));
-  return res;
+  ctx.waitUntil(cache.put(key, new Response(body, { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=30' } })));
+  return new Response(body, { headers: CLIENT });
 }
 
 export default {
