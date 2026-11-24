@@ -99,73 +99,6 @@ def toc(items, foot=''):
     rows = ''.join(f'<li><a href="#{i}">{label}</a><span class="tnum">{n}</span></li>' for i, label, n in items)
     return f'''    <nav class="page-index" aria-label="On this page"><ol>{rows}</ol>{foot}</nav>'''
 
-# ------------------------------------------------------------ schematics (current work)
-def svg(body, amp=24):
-    return f'<svg class="schem" data-amp="{amp}" viewBox="0 0 240 150" aria-hidden="true">{body}</svg>'
-
-def schem_parity():
-    r = random.Random(7)
-    out = ['<path class="k" d="M30 12 V128 H226"/>', '<line class="f" x1="34" y1="124" x2="216" y2="18"/>',
-           '<text class="lab" x="226" y="142" text-anchor="end">measured</text>',
-           '<text class="lab" x="22" y="12" text-anchor="end" transform="rotate(-90 22 12)">predicted</text>']
-    for i in range(24):
-        t = 0.06 + 0.88 * i / 23
-        x = 34 + t * 182 + r.gauss(0, 5)
-        y = 124 - t * 106 + r.gauss(0, 7)
-        cls = 'a s' if i in (17, 21) else 'kf s'
-        out.append(f'<circle class="{cls}" cx="{x:.1f}" cy="{y:.1f}" r="{3.2 if cls[0]=="a" else 2.4}"/>')
-    return svg(''.join(out), 30)
-
-def schem_graph():
-    cx, cy, R = 92, 76, 22
-    ring = [(cx + R * math.cos(math.pi / 6 + k * math.pi / 3), cy + R * math.sin(math.pi / 6 + k * math.pi / 3)) for k in range(6)]
-    chain = [ring[0], (ring[0][0] + 22, ring[0][1] - 12), (ring[0][0] + 44, ring[0][1]), (ring[0][0] + 66, ring[0][1] - 12)]
-    branch = [(chain[2][0], chain[2][1] + 25)]
-    sub = [ring[3], (ring[3][0] - 22, ring[3][1] - 12)]
-    top = [ring[4], (ring[4][0], ring[4][1] - 25)]
-    bonds = [(ring[k], ring[(k + 1) % 6]) for k in range(6)] + list(zip(chain, chain[1:])) + [(chain[2], branch[0]), (sub[0], sub[1]), (top[0], top[1])]
-    out = []
-    for a, b in bonds:
-        out.append(f'<line class="k late" x1="{a[0]:.1f}" y1="{a[1]:.1f}" x2="{b[0]:.1f}" y2="{b[1]:.1f}"/>')
-    # aromatic hint: an inner circle
-    out.append(f'<circle class="k late" cx="{cx}" cy="{cy}" r="{R*0.55:.1f}" opacity=".6"/>')
-    atoms = ring + chain[1:] + branch + sub[1:] + top[1:]
-    for i, (x, y) in enumerate(atoms):
-        cls = 'a s' if i == len(atoms) - 4 else 'kf s'
-        out.append(f'<circle class="{cls}" cx="{x:.1f}" cy="{y:.1f}" r="{3.6 if cls[0]=="a" else 2.8}"/>')
-    return svg(''.join(out), 34)
-
-def schem_pocket():
-    out = ['<path class="k" d="M6 40 C 40 36, 52 52, 62 76 S 84 128, 120 128 S 176 112, 184 76 S 206 38, 236 34"/>',
-           '<path class="k" d="M6 58 C 34 56, 44 70, 50 92 S 80 146, 120 146 S 196 128, 200 92 S 214 56, 236 54" opacity=".3"/>']
-    lig = [(102, 78), (120, 70), (138, 80), (138, 100), (120, 108), (102, 98), (156, 70), (86, 66)]
-    contacts = [(lig[0], (64, 82)), (lig[4], (118, 126)), (lig[3], (176, 100)), (lig[6], (186, 66))]
-    for a, b in contacts:
-        out.append(f'<line class="f late" x1="{a[0]}" y1="{a[1]}" x2="{b[0]}" y2="{b[1]}"/>')
-    for i in range(6):
-        a, b = lig[i], lig[(i + 1) % 6]
-        out.append(f'<line class="as s" x1="{a[0]}" y1="{a[1]}" x2="{b[0]}" y2="{b[1]}"/>')
-    out.append(f'<line class="as s" x1="{lig[2][0]}" y1="{lig[2][1]}" x2="{lig[6][0]}" y2="{lig[6][1]}"/>')
-    out.append(f'<line class="as s" x1="{lig[0][0]}" y1="{lig[0][1]}" x2="{lig[7][0]}" y2="{lig[7][1]}"/>')
-    for x, y in lig:
-        out.append(f'<circle class="a s" cx="{x}" cy="{y}" r="2.6"/>')
-    return svg(''.join(out), 40)
-
-def schem_ensemble():
-    r = random.Random(3)
-    out = []
-    for k in range(8):
-        pts = []
-        for i in range(9):
-            x = 14 + i * 26.5
-            y = 75 + 34 * math.sin(i * 0.9 + 0.4) * (0.6 + 0.4 * math.cos(i * 0.5)) + r.gauss(0, 4 + i * 0.9)
-            pts.append((x, y))
-        d = 'M' + ' '.join(f'{x:.1f} {y:.1f}' if j == 0 else f'L{x:.1f} {y:.1f}' for j, (x, y) in enumerate(pts))
-        cls = 'as s' if k == 3 else 'k s'
-        op = '' if k == 3 else f' opacity="{0.25 + 0.07 * k:.2f}"'
-        out.append(f'<path class="{cls}" d="{d}"{op}/>')
-    return svg(''.join(out), 18)
-
 # ------------------------------------------------------------ research
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import schematics as SC
@@ -447,11 +380,6 @@ def cv():
     return h + body
 
 # ------------------------------------------------------------ about
-def art_tab(id, zh, en, sub):
-    return f'''        <button type="button" class="art-tab" role="tab" id="tab-{id}" data-art="{id}" aria-controls="art-{id}" aria-selected="false" tabindex="-1">
-          <span class="cjk" lang="zh-Hans">{zh}</span><span class="tl"><b>{en}</b><small>{sub}</small></span>
-        </button>'''
-
 def about():
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import exhibit_html, json as _json

@@ -738,7 +738,8 @@
       if (mini) el.style.setProperty('--mini-h', mini.offsetHeight + 'px');
       var d = s.d = dims();
       img.style.width = d.w + 'px'; img.style.height = d.h + 'px';
-      s.x = clamp(s.x, 0, d.max);
+      var cx = clamp(s.x, 0, d.max); if (cx !== s.x) s.vx = 0;    // at either end the scroll stops: no overrun, no drift
+      s.x = cx;
       strip.style.transform = 'translate3d(' + (-(d.max - s.x)).toFixed(1) + 'px,0,0)';
       if (win) { var mw = mini.clientWidth; win.style.width = (d.pw / d.w * mw).toFixed(1) + 'px'; win.style.transform = 'translateX(' + ((d.max - s.x) / d.w * mw).toFixed(1) + 'px)'; }
     }
@@ -750,13 +751,21 @@
     }
     function kick() { if (!s.raf && s.shown) s.raf = requestAnimationFrame(loop); }
     s.kick = kick;
-    plate.addEventListener('pointerdown', function (e) { if (e.button !== 0) return; s.dragging = true; s.auto = false; s.lx = e.clientX; s.vx = 0; plate.setPointerCapture(e.pointerId); plate.classList.add('is-drag'); lens && lens.classList.remove('is-on'); kick(); });
+    // the browser must not select or drag the artwork itself: that is what made a ghost image
+    // appear when a drag was continued past either end
+    var noDrag = function (e) { e.preventDefault(); };
+    plate.addEventListener('dragstart', noDrag); if (mini) mini.addEventListener('dragstart', noDrag);
+    plate.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0) return;
+      e.preventDefault();                                     // no selection, no native drag; keyboard users reach the plate with Tab
+      s.dragging = true; s.auto = false; s.lx = e.clientX; s.vx = 0; plate.setPointerCapture(e.pointerId); plate.classList.add('is-drag'); lens && lens.classList.remove('is-on'); kick();
+    });
     plate.addEventListener('pointermove', function (e) {
       if (s.dragging) { var dx = e.clientX - s.lx; s.lx = e.clientX; s.x += dx; s.vx = dx; place(); }
       else if (lens && e.pointerType === 'mouse') moveLens(e);
     });
     var end = function () { s.dragging = false; plate.classList.remove('is-drag'); kick(); };
-    plate.addEventListener('pointerup', end); plate.addEventListener('pointercancel', end);
+    plate.addEventListener('pointerup', end); plate.addEventListener('pointercancel', end); plate.addEventListener('lostpointercapture', end);
     plate.addEventListener('pointerleave', function () { lens && lens.classList.remove('is-on'); });
     plate.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) < Math.abs(e.deltaY) && !e.shiftKey) return; e.preventDefault(); s.auto = false; s.x -= (e.deltaX || e.deltaY); place(); }, { passive: false });
     plate.addEventListener('keydown', function (e) {
@@ -766,9 +775,10 @@
     if (mini) {
       var mdrag = false;
       var toMini = function (e) { var b = mini.getBoundingClientRect(), f = (e.clientX - b.left) / b.width; s.auto = false; s.x = s.d.max - (f * s.d.w - s.d.pw / 2); place(); };
-      mini.addEventListener('pointerdown', function (e) { mdrag = true; mini.setPointerCapture(e.pointerId); mini.classList.add('is-drag'); toMini(e); });
+      var mend = function () { mdrag = false; mini.classList.remove('is-drag'); };
+      mini.addEventListener('pointerdown', function (e) { if (e.button !== 0) return; e.preventDefault(); mdrag = true; mini.setPointerCapture(e.pointerId); mini.classList.add('is-drag'); toMini(e); });
       mini.addEventListener('pointermove', function (e) { if (mdrag) toMini(e); });
-      mini.addEventListener('pointerup', function () { mdrag = false; mini.classList.remove('is-drag'); });
+      mini.addEventListener('pointerup', mend); mini.addEventListener('pointercancel', mend); mini.addEventListener('lostpointercapture', mend);
     }
     function moveLens(e) {
       var b = plate.getBoundingClientRect(), px = e.clientX - b.left, py = e.clientY - b.top, d = s.d;

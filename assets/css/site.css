@@ -86,8 +86,6 @@ i, em { font-style: italic; }
 ::selection { background: var(--accent); color: var(--paper); }
 .tnum { font-variant-numeric: tabular-nums; }
 .nw { white-space: nowrap; }
-.cjk, .cjk-inline { font-family: var(--cjk); font-weight: 400; }
-.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 
 /* Links and text buttons: one treatment. At rest a quiet underline; on hover
    it takes the accent and lifts a little toward the word. */
@@ -169,8 +167,6 @@ a { color: inherit; }
   font-size: var(--fs-small); line-height: var(--lh-small); color: var(--ink-2);
   padding-bottom: var(--s3);
 }
-.readout { display: flex; gap: var(--s5); white-space: nowrap; }
-.readout b { font-weight: 500; color: var(--ink); }
 .fig-ctl { display: flex; gap: var(--s5); }
 .hint { font-size: var(--fs-meta); color: var(--ink-3); }
 .fig-cap {
@@ -270,9 +266,6 @@ a { color: inherit; }
 .page-cv .page-index { grid-column: 4 / span 7; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--s2) var(--s6); }
 .page-cv .page-index ol { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s6); }
 .page-cv .index-foot { margin-top: 0; }
-.toc li { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s4); padding-block: 3px; color: var(--ink); }
-.toc li span { font-size: var(--fs-meta); color: var(--ink-3); }
-.toc-foot { margin-top: var(--s3); }
 
 /* About: the path sits under the intro, set small */
 .path { margin-top: var(--s5); display: grid; gap: var(--s3); font-size: var(--fs-body); line-height: var(--lh-body); letter-spacing: 0; color: var(--ink-2); }
@@ -294,7 +287,6 @@ a { color: inherit; }
 }
 @media (min-width: 1201px) { .section-label { position: sticky; top: var(--s5); } }
 .section-body { grid-column: 4 / span 9; display: grid; grid-template-columns: subgrid; row-gap: var(--s5); align-content: start; }
-.section-lead { grid-column: 2 / span 6; font-size: var(--fs-head); line-height: 1.42; letter-spacing: -.006em; color: var(--ink); }
 
 /* A ledger row on the page grid: date | main | side */
 .row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; }
@@ -468,6 +460,7 @@ a { color: inherit; }
 
 /* handscrolls */
 .scroll-plate { overflow: hidden; cursor: grab; touch-action: pan-y; background: var(--wash); }
+.scroll-plate, .minimap { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
 .scroll-room.is-long .scroll-plate { height: calc(var(--plate-h) - var(--mini-h, 48px) - var(--s4)); }
 .scroll-plate.is-drag { cursor: grabbing; }
 .scroll-strip { position: absolute; top: 0; left: 0; height: 100%; will-change: transform; }
@@ -488,7 +481,7 @@ a { color: inherit; }
 .lens.is-on { opacity: 1; }
 /* the whole scroll in true proportion; what is outside the view is veiled */
 .minimap { position: relative; width: 100%; overflow: hidden; cursor: pointer; touch-action: none; }
-.minimap img { display: block; width: 100%; height: 100%; }
+.minimap img { display: block; width: 100%; height: 100%; pointer-events: none; -webkit-user-drag: none; user-select: none; }
 .mini-window {
   position: absolute; top: 0; bottom: 0; left: 0; pointer-events: none;
   box-shadow: 0 0 0 1px var(--accent), 0 0 0 100vw color-mix(in srgb, var(--paper) 58%, transparent);
@@ -593,7 +586,6 @@ main { view-transition-name: main; }
   .page-aside { grid-column: 9 / span 4; }
   .section-label { grid-column: 1 / -1; margin-bottom: var(--s3); }
   .section-body { grid-column: 1 / -1; }
-  .section-lead { grid-column: 3 / span 8; }
   .row-date { grid-column: 1 / span 2; }
   .row-main { grid-column: 3 / span 7; }
   .row-side { grid-column: 10 / span 3; }
@@ -628,13 +620,12 @@ main { view-transition-name: main; }
   .intro { padding-right: 0; }
   .focus-list { grid-template-columns: 1fr 1fr; gap: var(--s4) var(--g); }
   .stage { min-height: 0; aspect-ratio: 4 / 5; }
-  .readout { gap: var(--s4); }
   .probe { display: none; }
   .page-head { align-items: start; }
   .page-intro, .page-aside, .page-research .page-intro, .page-cv .page-intro, .page-index { grid-column: 1 / -1; }
   .page-aside .portrait { margin-left: 0; max-width: 220px; }
   .row { align-items: start; }
-  .row-date, .row-main, .row-side, .row-main--wide, .thread .schem-wrap, .thread .row-main, .thread .row-side, .section-lead { grid-column: 1 / -1; }
+  .row-date, .row-main, .row-side, .row-main--wide, .thread .schem-wrap, .thread .row-main, .thread .row-side { grid-column: 1 / -1; }
   .thread { grid-template-columns: minmax(0, 1fr); }
   .row-date { margin-bottom: 2px; }
   .row-side { margin-top: var(--s2); }

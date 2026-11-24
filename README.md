@@ -26,10 +26,12 @@ python -I tools/build_pages.py .
 | 琴 吉他 | Tárrega, *Recuerdos de la Alhambra* | `assets/art/recuerdos.json` | Mutopia Project no. 810, typeset by Stewart Holmes; CC BY-SA 3.0 |
 | 棋 | Lee Sedol vs AlphaGo, game 4 (2016) | `assets/art/go-lee-sedol-alphago-4.json` | A. Brouwer go archive (CWI), `AlphaGo/LeeSedol/4.sgf` |
 | 棋 | Shusaku vs Gennan, the ear-reddening game (1846) | `assets/art/go-shusaku-gennan-1846.json` | A. Brouwer go archive (CWI), `Shusaku/126.sgf` |
-| 書 | Wang Xizhi, 蘭亭集序, Feng Chengsu's Tang tracing copy | `assets/art/lanting.jpg` | Wikimedia Commons `File:LantingXu.jpg`, PD-Art |
+| 書 | Wang Xizhi, 蘭亭集序, the Shenlong copy (Tang tracing, attributed to Feng Chengsu) | `assets/art/lanting.jpg` | Palace Museum, Beijing, via Wikimedia Commons `File:LantingXu.jpg`, PD-Art |
 | 畫 | Huang Gongwang, 富春山居圖, the Master Wuyong scroll | `assets/art/fuchun.jpg` | National Palace Museum, Taipei, via Wikimedia Commons, PD-Art |
 
-Instrument sounds are recorded samples from [tonejs-instruments](https://github.com/nbrouwer/tonejs-instruments) (CC BY 3.0) in `assets/audio/piano/` and `assets/audio/guitar/`, pitch-shifted and scheduled with the Web Audio API. Sound is off until a visitor presses Play.
+Instrument sounds are recorded samples from [tonejs-instruments](https://github.com/nbrouwer/tonejs-instruments) (CC BY 3.0) in `assets/audio/piano/` and `assets/audio/guitar/`, pitch-shifted and scheduled with the Web Audio API. Nothing sounds until a visitor presses Play or turns the sound on.
+
+The piano room draws Clair de lune as notes falling onto a keyboard; the guitar room plays Recuerdos on a drawn classical guitar, with fingering computed from the notes (not Tárrega's own). Both read the audio clock, corrected for output latency.
 
 To replace the two scroll images, download the originals from Wikimedia Commons and run
 
