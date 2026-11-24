@@ -205,12 +205,15 @@ a { color: inherit; }
 .bg-row dd { font-size: 16px; line-height: 1.48; color: var(--ink-2); }
 .bg-row dd b { color: var(--ink); font-weight: 520; }
 .contact { display: flex; flex-wrap: wrap; gap: 0 var(--s4); }
+.email { white-space: nowrap; }   /* written out, not linked: fewer harvesters */
 /* visitor footprint: a small dot-matrix world and the totals beside it */
-.footprint { display: flex; align-items: center; gap: var(--s5); margin-top: clamp(16px, 2.1vh, 22px); }
+.intro { position: relative; }
+/* anchored to the column's bottom-left corner, out of the flow: it never pushes the page into scrolling */
+.footprint { position: absolute; left: 0; bottom: 0; display: flex; align-items: flex-end; gap: var(--s5); }
 .footprint[hidden] { display: none; }
-.footprint canvas { flex: none; width: 150px; height: 58px; cursor: crosshair; }
+.footprint canvas { flex: none; width: var(--fp-w, 302px); height: var(--fp-h, 104px); cursor: crosshair; }
 .footprint.is-text canvas { display: none; }
-.fp-text { font-size: var(--fs-meta); line-height: var(--lh-meta); color: var(--ink-3); max-width: 30ch; }
+.fp-text { font-size: var(--fs-meta); line-height: var(--lh-meta); color: var(--ink-3); max-width: 30ch; min-height: calc(2em * var(--lh-meta)); padding-bottom: 2px; }
 .fp-text b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
 
 /* Fig. 1: title line, plot, caption; all hang from the plot's y-axis and end at its right edge */
@@ -527,6 +530,8 @@ a { color: inherit; }
   to   { opacity: 1; filter: blur(0); transform: none; }
 }
 
+/* elements that come into focus get their own layer while they animate, so the blur runs on the GPU */
+.js-motion .lede .w, .js-motion .page-head > *, .js-motion [data-reveal]:not(.is-in) .rv { will-change: opacity, transform, filter; }
 /* home: the statement focuses word by word, then the rest rises in */
 .js-motion .lede .w, .js-motion .intro-rest, .js-motion .bg-row { opacity: 0; }
 .js-motion.is-ready .lede .w { animation: focus-in 1150ms var(--ease-settle) both; animation-delay: calc(60ms + var(--i, 0) * 32ms); }
@@ -561,8 +566,9 @@ main { view-transition-name: main; }
 ::view-transition-old(main) { animation: vt-out 260ms var(--ease-in) both; }
 ::view-transition-new(main) { animation: vt-in 760ms var(--ease-settle) 80ms both; }
 ::view-transition-group(nav-mark) { animation-duration: 620ms; animation-timing-function: var(--ease-settle); }
-@keyframes vt-out { to { opacity: 0; filter: blur(4px); transform: translateY(-4px); } }
-@keyframes vt-in  { from { opacity: 0; filter: blur(6px); transform: translateY(8px); } }
+/* the snapshots are whole pages: animate only what the compositor can (opacity, transform) */
+@keyframes vt-out { to { opacity: 0; transform: translateY(-4px); } }
+@keyframes vt-in  { from { opacity: 0; transform: translateY(8px); } }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 420ms; animation-timing-function: var(--ease-std); }
 
 @media (prefers-reduced-motion: reduce) {
@@ -625,6 +631,7 @@ main { view-transition-name: main; }
   .intro-rest { grid-column: 1 / -1; order: 3; }
   .background { grid-column: 1 / -1; order: 4; }
   .intro { padding-right: 0; }
+  .footprint { position: static; grid-column: 1 / -1; order: 6; margin-top: var(--s5); }
   .focus-list { grid-template-columns: 1fr 1fr; gap: var(--s4) var(--g); }
   .stage { min-height: 0; aspect-ratio: 4 / 5; }
   .probe { display: none; }

@@ -34,6 +34,8 @@ def head(title, desc, path, depth, extra=''):
     if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
     setTimeout(function () {{ document.documentElement.classList.add('is-ready'); }}, 1200);
+    // heavy start-up work waits until the incoming page transition has finished
+    window.__revealed = new Promise(function (r) {{ if (!('onpagereveal' in window)) return r(); addEventListener('pagereveal', function (e) {{ var vt = e.viewTransition; if (vt) {{ vt.ready.catch(function () {{}}); vt.finished.then(r, r); }} else r(); }}, {{ once: true }}); setTimeout(r, 1500); }});
   }})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +47,7 @@ def head(title, desc, path, depth, extra=''):
 
 NAV = [('research/', 'Research'), ('cv/', 'CV'), ('about/', 'About')]
 # the visitor counter (analytics/worker.js) once it is deployed, e.g. 'https://kuangxh9-stats.NAME.workers.dev'; empty = off
-STATS = ''
+STATS = 'https://kuangxh9-stats.kuangxh9.workers.dev'
 MARK = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mark-inline.txt'), encoding='utf-8').read()
 
 def header(current, depth, absolute=False):
@@ -78,7 +80,7 @@ def footer(depth, extra_scripts=''):
 <footer class="site-foot grid">
   <p class="c1">Xiaohan Kuang</p>
   <p class="c2">
-    <a class="ln" href="mailto:xiaohan.kuang@outlook.com">xiaohan.kuang@outlook.com</a>
+    <span class="email">xiaohan.kuang [at] outlook.com</span>
     <a class="ln" href="https://github.com/kuangxh9">GitHub</a>
     <a class="ln" href="https://www.linkedin.com/in/xiaohan-kuang-39a508216/">LinkedIn</a>
     <a class="ln" href="https://orcid.org/0009-0001-9781-1509">ORCID</a>

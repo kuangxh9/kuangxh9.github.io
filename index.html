@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Xiaohan Kuang</title>
-<meta name="xk-stats" content="">
+<meta name="xk-stats" content="https://kuangxh9-stats.kuangxh9.workers.dev">
 <meta name="description" content="Xiaohan Kuang works at the intersection of machine learning and computational chemistry at Takeda, building models and AI agents to understand, predict and design molecular interactions.">
 <link rel="canonical" href="https://kuangxh9.github.io/">
 <meta name="theme-color" content="#f4f4f1" media="(prefers-color-scheme: light)">
@@ -25,6 +25,8 @@
     if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
     setTimeout(function () { document.documentElement.classList.add('is-ready'); }, 1200);
+    // heavy start-up work waits until the incoming page transition has finished
+    window.__revealed = new Promise(function (r) { if (!('onpagereveal' in window)) return r(); addEventListener('pagereveal', function (e) { var vt = e.viewTransition; if (vt) { vt.ready.catch(function () {}); vt.finished.then(r, r); } else r(); }, { once: true }); setTimeout(r, 1500); });
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +45,6 @@
     { "@type": "CollegeOrUniversity", "name": "Vanderbilt University" },
     { "@type": "CollegeOrUniversity", "name": "University of Wisconsin–Madison" }
   ],
-  "email": "mailto:xiaohan.kuang@outlook.com",
   "identifier": "https://orcid.org/0009-0001-9781-1509",
   "knowsAbout": ["Computational chemistry", "AI for science", "Agentic AI", "Machine learning", "Binding affinity prediction", "Generative models for molecular and protein design", "Molecular recognition", "Computational drug discovery"],
   "sameAs": ["https://github.com/kuangxh9", "https://www.linkedin.com/in/xiaohan-kuang-39a508216/", "https://orcid.org/0009-0001-9781-1509", "https://www.semanticscholar.org/author/2309579441"]
@@ -88,7 +89,7 @@
       <div class="bg-row" style="--i:1"><dt>Before</dt><dd><b>Generative models for structural biology</b><br>Meiler Lab, Vanderbilt, <span class="nw">2023–2025</span></dd></div>
       <div class="bg-row" style="--i:2"><dt>Trained in</dt><dd><b>BS <span class="nw">UW–Madison</span>, MS Vanderbilt</b><br>Computer science, math, data science</dd></div>
       <div class="bg-row" style="--i:3"><dt>Contact</dt><dd class="contact">
-        <a class="ln" href="mailto:xiaohan.kuang@outlook.com">xiaohan.kuang@outlook.com</a>
+        <span class="email">xiaohan.kuang [at] outlook.com</span>
         <a class="ln" href="https://github.com/kuangxh9">GitHub</a>
         <a class="ln" href="https://www.linkedin.com/in/xiaohan-kuang-39a508216/">LinkedIn</a>
         <a class="ln" href="https://orcid.org/0009-0001-9781-1509">ORCID</a>

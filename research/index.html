@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Research · Xiaohan Kuang</title>
 <meta name="description" content="Research by Xiaohan Kuang in computational chemistry and machine learning: binding affinity and activity prediction, generative design, binding sites, molecular co-folding and agentic workflows, and earlier work on water and metal sites.">
-<meta name="xk-stats" content="">
+<meta name="xk-stats" content="https://kuangxh9-stats.kuangxh9.workers.dev">
 <link rel="canonical" href="https://kuangxh9.github.io/research/">
 <meta name="theme-color" content="#f4f4f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101113" media="(prefers-color-scheme: dark)">
@@ -25,6 +25,8 @@
     if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
     setTimeout(function () { document.documentElement.classList.add('is-ready'); }, 1200);
+    // heavy start-up work waits until the incoming page transition has finished
+    window.__revealed = new Promise(function (r) { if (!('onpagereveal' in window)) return r(); addEventListener('pagereveal', function (e) { var vt = e.viewTransition; if (vt) { vt.ready.catch(function () {}); vt.finished.then(r, r); } else r(); }, { once: true }); setTimeout(r, 1500); });
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -216,7 +218,7 @@
 <footer class="site-foot grid">
   <p class="c1">Xiaohan Kuang</p>
   <p class="c2">
-    <a class="ln" href="mailto:xiaohan.kuang@outlook.com">xiaohan.kuang@outlook.com</a>
+    <span class="email">xiaohan.kuang [at] outlook.com</span>
     <a class="ln" href="https://github.com/kuangxh9">GitHub</a>
     <a class="ln" href="https://www.linkedin.com/in/xiaohan-kuang-39a508216/">LinkedIn</a>
     <a class="ln" href="https://orcid.org/0009-0001-9781-1509">ORCID</a>

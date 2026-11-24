@@ -348,7 +348,7 @@
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(stage);
 
   readColors();
-  fetch(src).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
+  (window.__revealed || Promise.resolve()).then(function () { return fetch(src); }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
     build(d);
     goTo(0);
     if (!reduced) setPlaying(true);

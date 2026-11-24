@@ -256,7 +256,7 @@
     };
     if ('ResizeObserver' in window) new ResizeObserver(r.resize).observe(plate);
     r.show = function (on) { r.shown = on; if (on) { r.resize(); r.kick(); } else r.transport.pause(); };
-    fetch(base + 'art/' + el.dataset.src).then(function (x) { return x.json(); }).then(function (d) {
+    (window.__revealed || Promise.resolve()).then(function () { return fetch(base + 'art/' + el.dataset.src); }).then(function (x) { return x.json(); }).then(function (d) {
       r.notes = d.notes.sort(function (a, b) { return a[0] - b[0] || a[2] - b[2]; });
       r.dur = r.notes.reduce(function (m, n) { return Math.max(m, n[0] + n[1]); }, 0) + 1.5;
       r.bars = d.bars || []; r.range = d.range;
@@ -442,10 +442,6 @@
     for (m2 = kb.lo; m2 <= kb.hi; m2++) {
       var bk = kb.keys[m2]; if (!bk || !bk.black) continue;
       var db = keyA[m2], on = press[m2], bx = Math.round(bk.x) + 0.5, bwid = Math.round(bk.w), bevel = Math.max(1.5, bwid * 0.12), front = 6 - db * 2.5;
-      // a short, soft shadow on the white keys below and to the right
-      var sh2 = ctx.createLinearGradient(0, ky + bh, 0, ky + bh + 6);
-      sh2.addColorStop(0, dark ? 'rgba(0,0,0,0.35)' : 'rgba(0,0,0,0.14)'); sh2.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = sh2; ctx.fillRect(bx + 1, ky + bh, bwid, 6);
       // body: the sides, darker
       ctx.fillStyle = on === 2 ? rgba(acc, 1) : (dark ? '#08090b' : '#111215');
       ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(bx, ky - 0.5, bwid, bh, [0, 0, 2, 2]); else ctx.rect(bx, ky, bwid, bh); ctx.fill();

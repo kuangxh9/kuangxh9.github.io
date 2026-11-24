@@ -579,9 +579,11 @@
   if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting && !document.hidden; if (visible) kick(); }).observe(stage);
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(stage); else window.addEventListener('resize', resize);
 
-  /* ---------- boot ---------- */
+  /* ---------- boot: after the page transition, so the contour field never competes with it ---------- */
   readColors();
   resize();
+  (window.__revealed || Promise.resolve()).then(boot);
+  function boot() {
   params = makeParams(seed);
   computeField();
   started = true;
@@ -601,5 +603,6 @@
       kick();
     };
     (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(go, go);
+  }
   }
 })();
